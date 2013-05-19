@@ -9,15 +9,15 @@ end
 
 Vagrant::Config.run do |config|
   # Define VM box to use
-  config.vm.box = "precise32"
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  config.vm.box = "MyPreciseBox"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # Increase memory of the VM
   config.vm.customize ["modifyvm", :id, "--memory", 512]
 
   # Define hostname to be used with Hostmaster
   config.vm.host_name = "server.dev"
-  config.hosts.name = "server.dev"
+  #config.hosts.name = "server.dev"
 
   # Use hostonly network with a static IP Address
   config.vm.network :hostonly, "172.90.90.90"
@@ -42,9 +42,8 @@ Vagrant::Config.run do |config|
     chef.add_recipe "misc::packages"
     chef.add_recipe "misc::vhost"
     chef.add_recipe "misc::db"
-    chef.add_recipe "dotdeb"
-    chef.add_recipe "dotdeb::php54"
     chef.add_recipe "php"
+    chef.add_recipe "phpmyadmin"
     chef.json = {
       :misc => {
         # Project name
