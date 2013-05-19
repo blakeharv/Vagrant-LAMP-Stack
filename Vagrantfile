@@ -69,6 +69,12 @@ Vagrant::Config.run do |config|
         :server_debian_password => 'root',
         :bind_address           => '172.90.90.90',
         :allow_remote_root      => true
+      },
+      :phpmyadmin => {
+        :cfg => {
+          :control_user_password => 'password'
+        },
+        :webserver => 'false'
       }
     }
   end
