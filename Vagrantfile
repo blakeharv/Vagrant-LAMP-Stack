@@ -1,19 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-def Kernel.is_windows?
-    # Detect if we are running on Windows
-    processor, platform, *rest = RUBY_PLATFORM.split("-")
-    platform == 'mingw32'
-end
-
 Vagrant::Config.run do |config|
   # Define VM box to use
   config.vm.box = "MyPreciseBox"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-  # Increase memory of the VM
-  config.vm.customize ["modifyvm", :id, "--memory", 512]
+  # Increases memory allocated for VM.
+  #config.vm.customize ["modifyvm", :id, "--memory", 4096, "--cpus", 2]
 
   # Define hostname to be used with Hostmaster
   config.vm.host_name = "server.dev"
@@ -23,8 +17,7 @@ Vagrant::Config.run do |config|
   config.vm.network :hostonly, "172.90.90.90"
 
   # Set share folder
-  use_nfs = !Kernel.is_windows?
-  config.vm.share_folder "shared" , "/home/vagrant/shared", "./", :nfs => use_nfs
+  config.vm.share_folder('www', '/home/vagrant/www', '../www', create: true, nfs: true)
 
   # Enable and configure chef solo
   config.vm.provision :chef_solo do |chef|
@@ -61,7 +54,7 @@ Vagrant::Config.run do |config|
         :server_aliases => "*.server.dev",
 
         # Document root for Apache vhost
-        :docroot        => "/home/vagrant/shared/public_html",
+        :docroot        => "/home/vagrant/www",
       },
       :mysql => {
         :server_root_password   => 'root',
@@ -74,7 +67,7 @@ Vagrant::Config.run do |config|
         :cfg => {
           :control_user_password => 'password'
         },
-        :webserver => 'false'
+        :webserver => 'apache2'
       }
     }
   end
