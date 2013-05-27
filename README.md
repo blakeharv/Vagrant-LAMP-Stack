@@ -1,4 +1,7 @@
 # Vagrant LAMP stack
+
+**Note from [blakeharv](https://github.com/blakeharv/):** I added phpmyadmin cookbook and removed the dotdeb cookbooks as they caused issues with my install.
+
 A dead-simple LAMP stack without any bells and whistles for your basic Linux/Apache/MySQL/PHP install, using Chef Solo for provisioning.
 
 The idea is for developers to fork this and add additional software and configuration that suits the needs of their project.
