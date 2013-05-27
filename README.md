@@ -1,6 +1,6 @@
 # Vagrant LAMP stack
 
-**Note from [blakeharv](https://github.com/blakeharv/):** I added phpmyadmin cookbook and removed the dotdeb cookbooks as they caused issues with my install. I also removed windows stuff from the vagrant file and made some edits to how folders are shared (I like my project repos outside of the VM folder).
+**Note from [blakeharv](https://github.com/blakeharv/):** I added phpmyadmin cookbook. Visit [http://server.dev/phpmyadmin](http://server.dev/phpmyadmin) after you're up and running. I removed the dotdeb cookbooks as they caused issues with my install. I also removed windows stuff from the vagrant file and made some edits to how folders are shared (I like my project repos outside of the VM folder).
 
 A dead-simple LAMP stack without any bells and whistles for your basic Linux/Apache/MySQL/PHP install, using Chef Solo for provisioning.
 
