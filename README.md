@@ -54,3 +54,12 @@ If you are using the default configuration, just create a `dump.sql` file in the
 
 ### Memcached
 * Port: 11211
+
+### Linux Stuff
+```sh
+# Watch Apache server requests
+tail -f /var/log/apache2/server-access.log
+```
+
+
+
