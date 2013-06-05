@@ -7,7 +7,7 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # Increases memory allocated for VM.
-  #config.vm.customize ["modifyvm", :id, "--memory", 4096, "--cpus", 2]
+  config.vm.customize ["modifyvm", :id, "--memory", 2048, "--cpus", 2]
 
   # Define hostname to be used with Hostmaster
   config.vm.host_name = "server.dev"
